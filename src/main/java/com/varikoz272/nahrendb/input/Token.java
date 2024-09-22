@@ -57,6 +57,9 @@ public abstract class Token {
             if (str.charAt(0) == '#')
                 return new VariableToken(str.substring(1));
 
+            if (str.charAt(0) == ':')
+                return new ProgramToken(str.substring(1));
+
             if (str.charAt(0) == '\'' && str.charAt(str.length() - 1) == '\'')
                 return new ValueToken(str.substring(1, str.length() - 1));
 

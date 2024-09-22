@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.varikoz272.nahrendb.input.ProgramToken;
 import com.varikoz272.nahrendb.input.SpaceToken;
 import com.varikoz272.nahrendb.input.Token;
 import com.varikoz272.nahrendb.input.TokenException;
@@ -20,7 +21,7 @@ public final class Console {
         Scanner scanner = new Scanner(System.in);
 
         String cmd = "";
-        while (!cmd.equals(":q")) {
+        while (!cmd.contains(":q")) {
             System.out.print(inputPrefix);
 
             cmd = scanner.nextLine();
@@ -35,10 +36,6 @@ public final class Console {
 
         for (int i = 0; i < tokens.size(); i++) {
             try {
-                if (tokens.get(i) == null) {
-                    System.out.println("tokens size = " + tokens.size() + " | i = " + i);
-                    continue;
-                }
                 tokens.get(i).checkCorrectCommand(tokens, i);
             }
 
@@ -65,7 +62,13 @@ public final class Console {
                     return "Something went wrong ..." + e.getMessage();
                 }
 
-                message.append("Table " + token.word + " successfully added (" + varToken.file.getPath() + ")");
+                message.append("table " + token.word + " successfully added (" + varToken.file.getPath() + ")\n");
+            }
+
+            if (token instanceof ProgramToken) {
+                var progToken = (ProgramToken) token;
+
+                message.append(progToken.getOutput());
             }
         }
 
