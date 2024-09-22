@@ -11,6 +11,7 @@ public class SpaceToken extends Token {
     public final File file;
 
     public void checkCorrectCommand(List<Token> tokens, int thisId) throws TokenException {
+        checkCorrectName();
     }
 
     public SpaceToken(String word) {

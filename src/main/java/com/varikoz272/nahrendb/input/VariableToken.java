@@ -9,7 +9,7 @@ public class VariableToken extends Token {
     }
 
     public void checkCorrectCommand(List<Token> tokens, int thisId) throws TokenException {
-
+        checkCorrectName();
     }
 
 }

@@ -12,6 +12,8 @@ import com.varikoz272.nahrendb.input.VariableToken;
 
 public final class Console {
 
+    public static final String inputPrefix = " $ ";
+
     public void open() {
         printGreetings();
 
@@ -19,7 +21,7 @@ public final class Console {
 
         String cmd = "";
         while (!cmd.equals(":q")) {
-            System.out.print(" $ ");
+            System.out.print(inputPrefix);
 
             cmd = scanner.nextLine();
             System.out.println(readAndGetMessage(cmd));
@@ -33,11 +35,15 @@ public final class Console {
 
         for (int i = 0; i < tokens.size(); i++) {
             try {
+                if (tokens.get(i) == null) {
+                    System.out.println("tokens size = " + tokens.size() + " | i = " + i);
+                    continue;
+                }
                 tokens.get(i).checkCorrectCommand(tokens, i);
             }
 
             catch (TokenException e) {
-                return e.getMessage();
+                return tokens.get(i).getPointerToLocation(tokens, i) + e.getMessage();
             }
         }
 

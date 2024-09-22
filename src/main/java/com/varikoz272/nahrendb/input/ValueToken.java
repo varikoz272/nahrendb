@@ -9,6 +9,6 @@ public class ValueToken extends Token {
     }
 
     public void checkCorrectCommand(List<Token> tokens, int thisId) throws TokenException {
-
+        checkCorrectName();
     }
 }

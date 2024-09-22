@@ -9,6 +9,7 @@ public class MethodToken extends Token {
     }
 
     public void checkCorrectCommand(List<Token> tokens, int thisId) throws TokenException {
-
+        if (thisId - 1 < 0)
+            throw new MethodTokenException(MethodTokenException.Reason.NoMethodInvoker);
     }
 }
