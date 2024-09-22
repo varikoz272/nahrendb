@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public final class NahrenDB {
 
-    public static NahrenDB instance = new NahrenDB();
+    public static final NahrenDB instance = new NahrenDB();
 
     public final File rootFolder;
 
