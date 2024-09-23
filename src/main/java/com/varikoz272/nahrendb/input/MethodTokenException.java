@@ -7,11 +7,14 @@ public class MethodTokenException extends TokenException {
     }
 
     public static enum Reason {
-        NoMethodInvoker;
+        NoMethodInvoker,
+        NoSuchMethod;
 
         public String getMessage() {
             if (this == NoMethodInvoker)
                 return "no method invoker\n" + "\n" + getHints();
+            if (this == NoSuchMethod)
+                return "no such method\n" + "\n" + getHints();
 
             return "Error";
         }
@@ -26,6 +29,11 @@ public class MethodTokenException extends TokenException {
                         : hint!     ^        ^     ^        ^
                         : hint!  invoker  method  arguments
                         """;
+            if (this == NoSuchMethod)
+                return """
+                        : hint!
+                        """;
+
             return "";
         }
     }

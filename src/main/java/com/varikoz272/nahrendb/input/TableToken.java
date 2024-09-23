@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.varikoz272.nahrendb.FileSystem;
 
-public class TableToken extends Token {
+public class TableToken extends ClassToken {
 
     public final File file;
 
@@ -22,4 +22,13 @@ public class TableToken extends Token {
     public void init() throws IOException {
         file.createNewFile();
     }
+
+    public boolean hasMethod(String name) {
+        return false;
+    }
+
+    public void execute(MethodToken method, ValueToken... args) throws MethodTokenException {
+
+    }
+
 }
