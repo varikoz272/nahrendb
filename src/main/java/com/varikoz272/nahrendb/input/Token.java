@@ -1,8 +1,10 @@
 package com.varikoz272.nahrendb.input;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.varikoz272.nahrendb.Console;
+import com.varikoz272.nahrendb.input.MethodToken.ExecutableMethod;
 
 public abstract class Token {
 
@@ -81,5 +83,27 @@ public abstract class Token {
 
             return len;
         }
+
+        public ExecutableMethod executableFromTokensUnsafe(List<Token> tokens) {
+            MethodToken methodToken = null;
+            ClassToken classToken = null;
+            List<ValueToken> valueTokens = new ArrayList<>();
+
+            for (int i = 0; i < tokens.size(); i++) {
+                if (tokens.get(i) instanceof ValueToken) {
+                    valueTokens.add((ValueToken) tokens.get(i));
+                    continue;
+                }
+
+                if (!(tokens.get(i) instanceof MethodToken))
+                    continue;
+
+                methodToken = (MethodToken) tokens.get(i);
+                classToken = (ClassToken) tokens.get(i - 1);
+            }
+
+            return new ExecutableMethod(classToken, methodToken, valueTokens);
+        }
+
     }
 }

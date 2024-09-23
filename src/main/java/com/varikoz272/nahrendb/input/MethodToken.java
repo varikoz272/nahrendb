@@ -1,6 +1,9 @@
 package com.varikoz272.nahrendb.input;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import jdk.jpackage.internal.RetryExecutor;
 
 public class MethodToken extends Token {
 
@@ -22,5 +25,34 @@ public class MethodToken extends Token {
 
         if (!classToken.hasMethod(word))
             throw new MethodTokenException(MethodTokenException.Reason.NoSuchMethod);
+    }
+
+    public static class ExecutableMethod {
+
+        public final ClassToken invoker;
+        public final MethodToken method;
+        private List<ValueToken> args;
+
+        public ExecutableMethod(ClassToken invoker, MethodToken method) {
+            this.invoker = invoker;
+            this.method = method;
+            this.args = new ArrayList<>();
+        }
+
+        public ExecutableMethod(ClassToken invoker, MethodToken method, List<ValueToken> args) {
+            this.invoker = invoker;
+            this.method = method;
+            this.args = args;
+
+        }
+
+        public void addArg(ValueToken arg) {
+            this.args.add(arg);
+        }
+
+        public List<ValueToken> getArgs() {
+            return args;
+        }
+
     }
 }
