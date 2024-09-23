@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.varikoz272.nahrendb.input.ProgramToken;
-import com.varikoz272.nahrendb.input.SpaceToken;
+import com.varikoz272.nahrendb.input.TableToken;
 import com.varikoz272.nahrendb.input.Token;
 import com.varikoz272.nahrendb.input.TokenException;
 import com.varikoz272.nahrendb.input.Tokenizer;
@@ -52,8 +52,8 @@ public final class Console {
 
         for (var token : cmd) {
 
-            if (token instanceof SpaceToken) {
-                var varToken = (SpaceToken) token;
+            if (token instanceof TableToken) {
+                var varToken = (TableToken) token;
                 try {
                     varToken.init();
                 }

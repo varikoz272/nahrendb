@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import com.varikoz272.nahrendb.input.MethodToken;
-import com.varikoz272.nahrendb.input.SpaceToken;
+import com.varikoz272.nahrendb.input.TableToken;
 import com.varikoz272.nahrendb.input.Tokenizer;
 import com.varikoz272.nahrendb.input.ValueToken;
 import com.varikoz272.nahrendb.input.VariableToken;
@@ -25,7 +25,7 @@ public class AppTest {
 
         assertTrue(tokens.size() == 6);
 
-        assertTrue(tokens.get(0) instanceof SpaceToken);
+        assertTrue(tokens.get(0) instanceof TableToken);
         assertTrue(tokens.get(1) instanceof VariableToken);
         assertTrue(tokens.get(2) instanceof VariableToken);
         assertTrue(tokens.get(3) instanceof MethodToken);

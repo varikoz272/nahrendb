@@ -52,7 +52,7 @@ public abstract class Token {
 
         public Token tokenFromString(String str) {
             if (str.charAt(0) == '$')
-                return new SpaceToken(str.substring(1));
+                return new TableToken(str.substring(1));
 
             if (str.charAt(0) == '#')
                 return new VariableToken(str.substring(1));
