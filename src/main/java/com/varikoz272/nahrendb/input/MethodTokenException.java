@@ -19,12 +19,13 @@ public class MethodTokenException extends TokenException {
         public String getHints() {
             if (this == NoMethodInvoker)
                 return """
-                        : hint! method should have its invoker:
+                        : hint! 1. only Tables or Variables can have methods;
+                        : hint! 2. method should have its invoker:
                         : hint!
                         : hint! $your_table add 'value1' 'value2'
                         : hint!     ^        ^     ^        ^
                         : hint!  invoker  method  arguments
-                                    """;
+                        """;
             return "";
         }
     }

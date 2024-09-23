@@ -11,5 +11,9 @@ public class MethodToken extends Token {
     public void checkCorrectCommand(List<Token> tokens, int thisId) throws TokenException {
         if (thisId - 1 < 0)
             throw new MethodTokenException(MethodTokenException.Reason.NoMethodInvoker);
+
+        Token prevToken = tokens.get(thisId - 1);
+        if (!(prevToken instanceof TableToken) && !(prevToken instanceof VariableToken))
+            throw new MethodTokenException(MethodTokenException.Reason.NoMethodInvoker);
     }
 }
