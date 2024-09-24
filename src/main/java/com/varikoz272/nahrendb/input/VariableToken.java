@@ -16,8 +16,13 @@ public class VariableToken extends ClassToken {
         return false;
     }
 
-    public void execute(MethodToken method, ValueToken... args) throws MethodTokenException {
+    public void executeQuiet(MethodToken method, List<ValueToken> args) throws MethodTokenException {
+        // TODO: suka
 
+    }
+
+    public String execute(MethodToken method, List<ValueToken> args) throws MethodTokenException {
+        return null;
     }
 
 }

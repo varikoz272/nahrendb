@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.varikoz272.nahrendb.input.MethodToken;
 import com.varikoz272.nahrendb.input.ProgramToken;
 import com.varikoz272.nahrendb.input.TableToken;
 import com.varikoz272.nahrendb.input.Token;
@@ -29,6 +30,13 @@ public final class Console {
         }
 
         scanner.close();
+    }
+
+    private String executeAndGetMessage(String cmd) {
+        List<Token> tokens = Tokenizer.instance.split(cmd);
+
+        MethodToken.ExecutableMethod executable = Token.Fabric.instance.executableFromTokensUnsafe(tokens);
+        return executable.invoker.execute(executable.method, executable.getArgs());
     }
 
     private String readAndGetMessage(String cmd) {

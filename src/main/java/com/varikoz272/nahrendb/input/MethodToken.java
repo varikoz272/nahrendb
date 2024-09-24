@@ -3,8 +3,6 @@ package com.varikoz272.nahrendb.input;
 import java.util.ArrayList;
 import java.util.List;
 
-import jdk.jpackage.internal.RetryExecutor;
-
 public class MethodToken extends Token {
 
     public MethodToken(String word) {

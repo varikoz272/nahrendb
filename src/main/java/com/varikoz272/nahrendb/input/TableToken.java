@@ -27,8 +27,12 @@ public class TableToken extends ClassToken {
         return false;
     }
 
-    public void execute(MethodToken method, ValueToken... args) throws MethodTokenException {
+    public String execute(MethodToken method, List<ValueToken> args) throws MethodTokenException {
+        return null;
+    }
 
+    public void executeQuiet(MethodToken method, List<ValueToken> args) throws MethodTokenException {
+        // TODO: suka
     }
 
 }

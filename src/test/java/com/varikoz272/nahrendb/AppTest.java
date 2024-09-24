@@ -39,4 +39,9 @@ public class AppTest {
         assertTrue(tokens.get(4).word.equals("mr john"));
         assertTrue(tokens.get(5).word.equals("20"));
     }
+
+    @Test
+    public void tokenizerReason1() {
+        String input = "$.test_table";
+    }
 }
