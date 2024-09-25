@@ -14,6 +14,7 @@ import com.varikoz272.nahrendb.input.Tokenizer;
 public final class Console {
 
     public static final String inputPrefix = " $ ";
+    public static final String javaExceptionMessage = "something went wrong...";
 
     public void open() {
         printGreetings();
@@ -26,6 +27,7 @@ public final class Console {
 
             cmd = scanner.nextLine();
             System.out.println(readAndGetMessage(cmd));
+            System.out.println(executeAndGetMessage(cmd));
         }
 
         scanner.close();
