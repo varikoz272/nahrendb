@@ -1,7 +1,5 @@
 package com.varikoz272.nahrendb.input;
 
-import java.util.List;
-
 public abstract class ClassToken extends Token {
 
     public ClassToken(String word) {
@@ -10,8 +8,8 @@ public abstract class ClassToken extends Token {
 
     public abstract boolean hasMethod(String name);
 
-    public abstract void executeQuiet(MethodToken method, List<ValueToken> args) throws ClassTokenException;
+    public abstract void executeQuiet(MethodToken.ExecutableMethod executable) throws ClassTokenException;
 
-    public abstract String execute(MethodToken method, List<ValueToken> args) throws ClassTokenException;
+    public abstract String execute(MethodToken.ExecutableMethod executable) throws ClassTokenException;
 
 }

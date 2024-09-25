@@ -8,13 +8,16 @@ public class MethodTokenException extends TokenException {
 
     public static enum Reason {
         NoMethodInvoker,
-        NoSuchMethod;
+        NoSuchMethod,
+        AmountOfArgs;
 
         public String getMessage() {
             if (this == NoMethodInvoker)
                 return "no method invoker\n" + "\n" + getHints();
             if (this == NoSuchMethod)
                 return "no such method\n" + "\n" + getHints();
+            if (this == AmountOfArgs)
+                return "wrong amount of arguments \n" + "\n" + getHints();
 
             return "Error";
         }
@@ -30,6 +33,10 @@ public class MethodTokenException extends TokenException {
                         : hint!  invoker  method  arguments
                         """;
             if (this == NoSuchMethod)
+                return """
+                        : hint!
+                        """;
+            if (this == AmountOfArgs)
                 return """
                         : hint!
                         """;

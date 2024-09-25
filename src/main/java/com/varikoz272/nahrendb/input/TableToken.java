@@ -24,15 +24,25 @@ public class TableToken extends ClassToken {
     }
 
     public boolean hasMethod(String name) {
+        if (name.equals("of"))
+            return true;
+
         return false;
     }
 
-    public String execute(MethodToken method, List<ValueToken> args) throws MethodTokenException {
-        return null;
+    public String execute(MethodToken.ExecutableMethod executable) throws MethodTokenException {
+
+        if (executable.method.word.equals("of")) {
+            if (executable.getArgs().size() == 0)
+                throw new MethodTokenException(MethodTokenException.Reason.AmountOfArgs);
+
+        }
+
+        throw new MethodTokenException(MethodTokenException.Reason.NoSuchMethod);
     }
 
-    public void executeQuiet(MethodToken method, List<ValueToken> args) throws MethodTokenException {
-        // TODO: suka
+    public void executeQuiet(MethodToken.ExecutableMethod executable) throws MethodTokenException {
+        execute(executable);
     }
 
 }

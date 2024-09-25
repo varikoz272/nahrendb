@@ -1,8 +1,6 @@
 package com.varikoz272.nahrendb;
 
 import java.io.File;
-import java.io.Reader;
-import java.util.Scanner;
 
 public final class NahrenDB {
 

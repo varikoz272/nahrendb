@@ -10,7 +10,6 @@ import com.varikoz272.nahrendb.input.TableToken;
 import com.varikoz272.nahrendb.input.Token;
 import com.varikoz272.nahrendb.input.TokenException;
 import com.varikoz272.nahrendb.input.Tokenizer;
-import com.varikoz272.nahrendb.input.VariableToken;
 
 public final class Console {
 
@@ -36,7 +35,7 @@ public final class Console {
         List<Token> tokens = Tokenizer.instance.split(cmd);
 
         MethodToken.ExecutableMethod executable = Token.Fabric.instance.executableFromTokensUnsafe(tokens);
-        return executable.invoker.execute(executable.method, executable.getArgs());
+        return executable.invoker.execute(executable);
     }
 
     private String readAndGetMessage(String cmd) {
